@@ -1,6 +1,6 @@
-require "smart_pension/version"
+require_relative "smart_pension/version"
+require_relative "smart_pension/views"
+#require_relative "smart_pension/webserver.txt"
 
-module SmartPension
-  class Error < StandardError; end
-  # Your code goes here...
-end
+
+Parse.new("webserver.txt")
