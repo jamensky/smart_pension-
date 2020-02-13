@@ -13,9 +13,10 @@ class Parse
   def pages
     @page = [] 
     @v.each{|x| @page << x.split.first}
-    
+
+    hash = Hash.new
     @page.each do |x|
-      @page.count(x)
+      hash[x] = @page.count(x)
       binding.pry 
     end 
   end 
