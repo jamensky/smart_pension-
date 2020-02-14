@@ -20,9 +20,10 @@ class Parse
     puts hash.sort_by{|page, views| views}.reverse
   end
 
-  def ip_address
+  def unique_views
     @ip = []
-    @page_and_ip.each{|x| @ip << x}
+    @page_and_ip.each{|x| @ip << x.split.last}
+    binding.pry
   end
 
 
