@@ -13,16 +13,21 @@ class Parse
     @pages = []
     @page_and_ip.each{|x| @pages << x.split.first}
 
-    hash = Hash.new
-    @pages.each do |x|
-      hash[x] = @pages.count(x)
-    end
-    puts hash.sort_by{|page, views| views}.reverse
+    ranked_pages = Hash.new
+    @pages.each{|x| ranked_pages[x] = @pages.count(x)}
+    puts ranked_pages.sort_by{|page, views| views}.reverse
   end
 
   def unique_views
     @ip = []
     @page_and_ip.each{|x| @ip << x.split.last}
+
+    @page_and_ip.each do|x|
+      x.split
+      @page_and_ip.each do |y|
+
+     
+     
     binding.pry
   end
 
