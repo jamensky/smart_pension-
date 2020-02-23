@@ -1,17 +1,13 @@
-require "pry"
-
 class Parse
 
   def initialize(file)
    @pages_and_ip = []
    @pages = []
-   @ip = []
 
    File.open(file, "r") do |line|
     line.each do |x| 
       @pages_and_ip << x 
       @pages << x.split.first
-      @ip << x.split.last 
     end 
    end
   end
@@ -25,19 +21,19 @@ class Parse
 
 
   def unique_views
-    hash = {} 
-    @pages.each{|pg| hash[pg] = []}
+    page_array = {} 
+    @pages.each{|pg| page_array[pg] = []}
 
     @pages_and_ip.each do |x|
-      if hash.include?(x.split.first) 
-        if !hash[x.split.first].include?(x.split.last)
-          hash[x.split.first] << x.split.last
+      if page_array.include?(x.split.first) 
+        if !page_array[x.split.first].include?(x.split.last)
+          page_array[x.split.first] << x.split.last
         end
       end 
     end   
     
     ranked_pages = {}
-    hash.each do |x, y|
+    page_array.each do |x, y|
       ranked_pages[x] = y.length 
     end 
     puts ranked_pages.sort_by{|pg, ip| ip }.reverse
